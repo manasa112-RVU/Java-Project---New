@@ -1,20 +1,17 @@
 
 import java.util.Scanner;
 
-public class Demo {
-
-    private static String player1;
-    private static String player2;
-    private static char player1Symbol;
-    private static char player2Symbol;
-
+public class TicTacToe {
 
     // The grid where the game is played, represented as a 2D array
     private static char[][] grid = new char[3][3];
 
+    // The players, represented as X and O
+    private static final char PLAYER_X = 'X';
+    private static final char PLAYER_O = 'O';
 
     // The current player
-    private static char currentPlayer;
+    private static char currentPlayer = PLAYER_X;
 
     public static void main(String[] args) {
         // Initialize the grid with empty spaces
@@ -24,36 +21,14 @@ public class Demo {
             }
         }
 
-Scanner scanner = new Scanner(System.in);
+        // Start the game loop
+        while (true) {
+            // Print the grid
+            printGrid();
 
-System.out.print("Enter Player 1 name: ");
-player1 = scanner.nextLine();
-
-System.out.print("Enter Player 2 name: ");
-player2 = scanner.nextLine();
-
-// ✅ Ask Player 1 to choose X or O
-System.out.print(player1 + ", choose your symbol (X or O): ");
-player1Symbol = scanner.next().toUpperCase().charAt(0);
-player2Symbol = (player1Symbol == 'X') ? 'O' : 'X';
-System.out.println(player2 + ", your symbol is " + player2Symbol);
-
-// Player 1 starts the game
-currentPlayer = player1Symbol;
-
-// Start the game loop
-while (true) {
-
-    printGrid();
-
-   if (currentPlayer == player1Symbol) {
-    System.out.println(player1 + " (" + player1Symbol + "), enter your move (row, col): ");
-   } else {
-    System.out.println(player2 + " (" + player2Symbol + "), enter your move (row, col): ");
-   }
-
-
-
+            // Prompt the current player to make a move
+            System.out.println("Player " + currentPlayer + ", enter your move (row, col): ");
+            Scanner scanner = new Scanner(System.in);
             int row = scanner.nextInt();
             int col = scanner.nextInt();
 
@@ -66,40 +41,36 @@ while (true) {
                 printGrid();
 
                 // Print the winner (if any)
-             if (hasWinner()) {
-    if (currentPlayer == player1Symbol) {
-        System.out.println(player1 + " wins!");
-    } else {
-        System.out.println(player2 + " wins!");
-    }
-} else {
-    System.out.println("It's a tie!");
-}
-
-
+                if (hasWinner()) {
+                    System.out.println("Player " + currentPlayer + " wins!");
+                } else {
+                    System.out.println("It's a tie!");
+                }
 
                 // End the game loop
                 break;
             }
 
             // Switch to the other player
-            // Switch to the other player
-currentPlayer = (currentPlayer == player1Symbol) ? player2Symbol : player1Symbol;
-
+            currentPlayer = (currentPlayer == PLAYER_X) ? PLAYER_O : PLAYER_X;
         }
     }
+
+    // Print the grid to the console
     private static void printGrid() {
-    System.out.println("+---+---+---+");
-    for (int i = 0; i < 3; i++) {
-        System.out.print("|");
-        for (int j = 0; j < 3; j++) {
-            System.out.print(" " + grid[i][j] + " |");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(grid[i][j]);
+                if (j < 2) {
+                    System.out.print("|");
+                }
+            }
+            System.out.println();
+            if (i < 2) {
+                System.out.println("-+-+-");
+            }
         }
-        System.out.println();
-        System.out.println("+---+---+---+");
     }
-}
-
 
     // Check if the game is over (i.e. someone has won or there are no more empty spaces)
     private static boolean isGameOver() {
