@@ -32,7 +32,7 @@ player1 = scanner.nextLine();
 System.out.print("Enter Player 2 name: ");
 player2 = scanner.nextLine();
 
-// ✅ Ask Player 1 to choose X or O
+//  Ask Player 1 to choose X or O
 System.out.print(player1 + ", choose your symbol (X or O): ");
 player1Symbol = scanner.next().toUpperCase().charAt(0);
 player2Symbol = (player1Symbol == 'X') ? 'O' : 'X';
@@ -163,4 +163,4 @@ currentPlayer = (currentPlayer == player1Symbol) ? player2Symbol : player1Symbol
         return true;
     }
 }
-// Done with the project
+// project is done
