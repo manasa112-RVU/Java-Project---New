@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
 
-public class TicTacToe {
+public class Demo {
 
     // The grid where the game is played, represented as a 2D array
     private static char[][] grid = new char[3][3];
