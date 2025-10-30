@@ -80,9 +80,6 @@ public class Demo {
                          System.out.println("It's a tie!");
                    }
 
-
-
-                   // End the game loop
                 break;
             }
 
@@ -180,4 +177,3 @@ public class Demo {
         return true;
     }
 }
-// project is done
