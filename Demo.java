@@ -56,13 +56,19 @@ public class Demo {
                       System.out.println(player2 + " (" + player2Symbol + "), enter your move (row, col): ");
                 }
 
+                int row, col;
 
+                while (true) {
+                row = scanner.nextInt();
+                col = scanner.nextInt();
 
-                int row = scanner.nextInt();
-                int col = scanner.nextInt();
-
-                // Update the grid with the player's move
+                if (row >= 0 && row < 3 && col >= 0 && col < 3 && grid[row][col] == ' ') {
                 grid[row][col] = currentPlayer;
+                break;
+                } else {
+                System.out.println("Invalid move! Please try again.");
+                }
+}
 
                 // Check if the game is over
                 if (isGameOver()) {
