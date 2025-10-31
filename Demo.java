@@ -15,6 +15,13 @@ public class Demo {
 
     // The current player
     private static char currentPlayer;
+    
+    //  Scoreboard variables
+    private static int player1Score = 0;
+    private static int player2Score = 0;
+    private static int tieScore = 0;
+
+    
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -79,12 +86,16 @@ public class Demo {
                    if (hasWinner()) {
                       if (currentPlayer == player1Symbol) {
                          System.out.println(player1 + " wins!");
+                         player1Score++;
                       } else {
                          System.out.println(player2 + " wins!");
+                         player2Score++;
                       }
                    } else {
                          System.out.println("It's a tie!");
+                         tieScore++;
                    }
+                   displayScoreboard();
 
                 break;
             }
@@ -100,6 +111,11 @@ public class Demo {
             scanner.nextLine(); // consume newline
             if (!response.equals("yes")) {
                 playAgain = false;
+
+                // Final scoreboard before exiting
+                System.out.println("\nFinal Scoreboard:");
+                displayScoreboard();
+
                 System.out.println("Thank you for playing Tic Tac Toe!");
             }
         }
@@ -182,4 +198,15 @@ public class Demo {
         }
         return true;
     }
+    // Scoreboard display method
+    private static void displayScoreboard() {
+        System.out.println("\n===== SCOREBOARD =====");
+        System.out.println(player1 + " (" + player1Symbol + "): " + player1Score);
+        System.out.println(player2 + " (" + player2Symbol + "): " + player2Score);
+        System.out.println("Ties: " + tieScore);
+        System.out.println("======================\n");
+    }
 }
+
+    
+
