@@ -198,7 +198,7 @@ public class Demo {
         }
         return true;
     }
-    // Scoreboard display method
+
     private static void displayScoreboard() {
         System.out.println("\n===== SCOREBOARD =====");
         System.out.println(player1 + " (" + player1Symbol + "): " + player1Score);
