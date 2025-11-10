@@ -1,4 +1,4 @@
-
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Demo {
@@ -29,8 +29,39 @@ public class Demo {
         //  Outer loop for replaying the game
         boolean playAgain = true;
         while (playAgain) {
+            resetGrid();
+            chooseSymbols(scanner);
 
-            // Initialize the grid with empty spaces
+            currentPlayer = player1Symbol;
+
+            while (true) {
+                printGrid();
+                readMove(scanner);
+
+                if (isGameOver()) {
+                    printGrid();
+                    if (hasWinner()) {
+                        declareWinner();
+                    } else {
+                        System.out.println("It's a tie!");
+                        tieScore++;
+                    }
+
+                    displayScoreboard();
+                    break;
+                }
+                   switchPlayer();
+            }
+
+            playAgain = askReplay(scanner);
+        }
+         System.out.println("\nFinal Scoreboard:");
+        displayScoreboard();
+        System.out.println("Thank you for playing Tic Tac Toe!");
+        scanner.close();
+    }
+
+           private static void resetGrid() {
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
                      grid[i][j] = ' ';
