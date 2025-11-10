@@ -48,20 +48,22 @@ public class Demo {
                     printGrid();
 
                     if (hasWinner()) {
-                        if (currentPlayer == player1Symbol) {
-                            System.out.println(player1 + " wins!");
-                            player1Score++;
-                        } else {
-                            System.out.println(player2 + " wins!");
-                            player2Score++;
-                        }
-                    } else {
-                        System.out.println("It's a tie!");
-                        tieScore++;
-                    }
+                      if (currentPlayer == player1Symbol) {
+                         System.out.println(player1 + " wins!");
+                         player1Score++;
+                      } else {
+                         System.out.println(player2 + " wins!");
+                         player2Score++;
+                      }
+                   } else {
+                         System.out.println("It's a tie!");
+                         tieScore++;
+                   }
+                   displayScoreboard();
 
-                    displayScoreboard();
-                    break;
+                break;
+            }
+
                 }
 
                 switchPlayer();
