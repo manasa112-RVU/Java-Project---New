@@ -67,6 +67,8 @@ public class Demo {
                      grid[i][j] = ' ';
                 }
             }
+            private static void chooseSymbols(Scanner scanner) {
+        while (true) {
 
             System.out.print("Enter Player 1 name: ");
             player1 = scanner.nextLine();
@@ -79,6 +81,28 @@ public class Demo {
             player1Symbol = scanner.next().toUpperCase().charAt(0);
             player2Symbol = (player1Symbol == 'X') ? 'O' : 'X';
             System.out.println(player2 + ", your symbol is " + player2Symbol);
+                 if (chosen == 'X' || chosen == 'O') {
+                player1Symbol = chosen;
+                player2Symbol = (chosen == 'X') ? 'O' : 'X';
+                System.out.println(player2 + ", your symbol is " + player2Symbol);
+                break;
+            } else {
+                System.out.println("Invalid symbol! Please choose only X or O.");
+            }
+        }
+                private static void printGrid() {
+        System.out.println("\n   0   1   2");
+        System.out.println(" +---+---+---+");
+
+        for (int i = 0; i < 3; i++) {
+            System.out.print(i + "|");
+            for (int j = 0; j < 3; j++) {
+                System.out.print(" " + grid[i][j] + " |");
+            }
+            System.out.println();
+            System.out.println(" +---+---+---+");
+        }
+    }
 
             // Player 1 starts the game
             currentPlayer = player1Symbol;
